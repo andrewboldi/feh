@@ -683,6 +683,37 @@ void slideshow_save_image(winwidget win)
 	return;
 }
 
+void slideshow_copy_image(winwidget win)
+{
+	char tmpname[] = "/tmp/feh_clip_XXXXXX";
+	char *cmd;
+	Imlib_Load_Error err;
+	int fd = mkstemp(tmpname);
+
+	if (fd == -1) {
+		weprintf("copy: unable to create temporary file:");
+		return;
+	}
+	close(fd);
+
+	imlib_context_set_image(win->im);
+	imlib_image_set_format("png");
+	imlib_save_image_with_error_return(tmpname, &err);
+	if (err) {
+		feh_print_load_error(tmpname, win, err, LOAD_ERROR_IMLIB);
+	} else {
+		/* xclip reads the whole file, then forks to serve the selection */
+		cmd = estrjoin("", "xclip -selection clipboard -t image/png -i ",
+				tmpname, NULL);
+		if (system(cmd) != 0)
+			weprintf("copy: running xclip failed");
+		else if (opt.verbose)
+			fputs("copied image to clipboard\n", stderr);
+		free(cmd);
+	}
+	unlink(tmpname);
+}
+
 gib_list *feh_list_jump(gib_list * root, gib_list * l, int direction, int num)
 {
 	int i;

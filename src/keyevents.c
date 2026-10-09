@@ -192,12 +192,13 @@ void init_keyevents(void) {
 	feh_set_kb("toggle_filenames" , 0, XK_d, 0, 0, 0, 0);
 	feh_set_kb("toggle_info" , 0, XK_i, 0, 0, 0, 0);
 	feh_set_kb("toggle_pointer" , 0, XK_o, 0, 0, 0, 0);
-	feh_set_kb("toggle_caption" , 0, XK_c, 0, 0, 0, 0);
+	feh_set_kb("toggle_caption" , 0, XK_C, 0, 0, 0, 0);
 	feh_set_kb("toggle_pause" , 0, XK_h, 0, 0, 0, 0);
 	feh_set_kb("toggle_menu" , 0, XK_m, 0, 0, 0, 0);
 	feh_set_kb("toggle_fullscreen" , 0, XK_f, 0, 0, 0, 0);
 	feh_set_kb("reload_image" , 0, XK_r, 0, 0, 0, 0);
 	feh_set_kb("save_image" , 0, XK_s, 0, 0, 0, 0);
+	feh_set_kb("copy_image" , 0, XK_c, 0, 0, 0, 0);
 	feh_set_kb("save_filelist" , 0, XK_L, 0, 0, 0, 0);
 	feh_set_kb("orient_1" , 0, XK_greater, 0, 0, 0, 0);
 	feh_set_kb("orient_3" , 0, XK_less, 0, 0, 0, 0);
@@ -741,6 +742,9 @@ void feh_event_handle_generic(winwidget winwid, unsigned int state, KeySym keysy
 	}
 	else if (feh_is_kp(EVENT_save_image, state, keysym, button)) {
 		slideshow_save_image(winwid);
+	}
+	else if (feh_is_kp(EVENT_copy_image, state, keysym, button)) {
+		slideshow_copy_image(winwid);
 	}
 	else if (feh_is_kp(EVENT_save_filelist, state, keysym, button)) {
 		if ((winwid->type == WIN_TYPE_THUMBNAIL)

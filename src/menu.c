@@ -72,6 +72,7 @@ enum {
 	CB_SORT_FILESIZE,
 	CB_SORT_RANDOMIZE,
 	CB_SAVE_IMAGE,
+	CB_COPY_IMAGE,
 	CB_SAVE_FILELIST,
 	CB_FIT,
 	CB_OPT_DRAW_FILENAME,
@@ -897,6 +898,7 @@ void feh_menu_init_main(void)
 	menu_main = feh_menu_new();
 	menu_main->name = estrdup("MAIN");
 
+	feh_menu_add_entry(menu_main, "Copy", NULL, CB_COPY_IMAGE, 0, NULL);
 	feh_menu_add_entry(menu_main, "File", "FILE", 0, 0, NULL);
 	if (opt.slideshow || opt.multiwindow) {
 		feh_menu_add_entry(menu_main, "Sort List", "SORT", 0, 0, NULL);
@@ -1066,6 +1068,7 @@ void feh_menu_init_single_win(void)
 	menu_single_win = feh_menu_new();
 	menu_single_win->name = estrdup("SINGLEWIN");
 
+	feh_menu_add_entry(menu_single_win, "Copy", NULL, CB_COPY_IMAGE, 0, NULL);
 	feh_menu_add_entry(menu_single_win, "File", "SINGLEWIN_FILE", 0, 0, NULL);
 	m = feh_menu_new();
 	m->name = estrdup("SINGLEWIN_FILE");
@@ -1322,6 +1325,9 @@ void feh_menu_cb(feh_menu * m, feh_menu_item * i, int action, unsigned short dat
 			break;
 		case CB_SAVE_IMAGE:
 			slideshow_save_image(m->fehwin);
+			break;
+		case CB_COPY_IMAGE:
+			slideshow_copy_image(m->fehwin);
 			break;
 		case CB_SAVE_FILELIST:
 			feh_save_filelist();

@@ -186,6 +186,7 @@ void feh_reload_image(winwidget w, int resize, int force_new);
 void feh_filelist_image_remove(winwidget winwid, char do_delete);
 void feh_print_load_error(char *file, winwidget w, Imlib_Load_Error err, enum feh_load_error feh_err);
 void slideshow_save_image(winwidget win);
+void slideshow_copy_image(winwidget win);
 void feh_edit_inplace(winwidget w, int orientation);
 void feh_edit_inplace_lossless(winwidget w, int orientation);
 gib_list *feh_wrap_string(char *text, int wrap_width, Imlib_Font fn, gib_style * style);

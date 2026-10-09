@@ -1619,7 +1619,7 @@ Toggle actions display
 .
 Enable/Disable anti-aliasing
 .
-.It c Bq toggle_caption
+.It C Bq toggle_caption
 .
 Caption entry mode.
 If
@@ -1704,6 +1704,12 @@ Quit
 .
 Reload current image.
 Useful for webcams
+.
+.It c Bq copy_image
+.
+Copy the current image to the clipboard as PNG.
+Requires
+.Xr xclip 1 .
 .
 .It s Bq save_image
 .

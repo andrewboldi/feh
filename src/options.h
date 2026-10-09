@@ -328,6 +328,7 @@ enum key_action {
 	EVENT_toggle_fullscreen,
 	EVENT_reload_image,
 	EVENT_save_image,
+	EVENT_copy_image,
 	EVENT_save_filelist,
 	EVENT_orient_1,
 	EVENT_orient_3,
