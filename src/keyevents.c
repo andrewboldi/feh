@@ -182,7 +182,7 @@ void init_keyevents(void) {
 	feh_set_kb("zoom_default" , 0, XK_KP_Multiply, 0, XK_asterisk,0, 0);
 	feh_set_kb("zoom_fit"  , 0, XK_KP_Divide , 0, XK_slash     , 0, 0);
 	feh_set_kb("zoom_fill" , 0, XK_exclam    , 0, 0            , 0, 0);
-	feh_set_kb("size_to_image" , 0, XK_w      , 0, 0            , 0, 0);
+	feh_set_kb("size_to_image" , 0, XK_W      , 0, 0            , 0, 0);
 	feh_set_kb("render"    , 0, XK_KP_Begin  , 0, XK_R         , 0, 0);
 	feh_set_kb("toggle_actions" , 0, XK_a, 0, 0, 0, 0);
 	feh_set_kb("toggle_aliasing" , 0, XK_A, 0, 0, 0, 0);
@@ -200,6 +200,7 @@ void init_keyevents(void) {
 	feh_set_kb("reload_image" , 0, XK_r, 0, 0, 0, 0);
 	feh_set_kb("save_image" , 0, XK_s, 0, 0, 0, 0);
 	feh_set_kb("copy_image" , 0, XK_c, 0, 0, 0, 0);
+	feh_set_kb("toggle_fit_width" , 0, XK_w, 0, 0, 0, 0);
 	feh_set_kb("save_filelist" , 0, XK_L, 0, 0, 0, 0);
 	feh_set_kb("orient_1" , 0, XK_greater, 0, 0, 0, 0);
 	feh_set_kb("orient_3" , 0, XK_less, 0, 0, 0, 0);
@@ -695,6 +696,10 @@ void feh_event_handle_generic(winwidget winwid, unsigned int state, KeySym keysy
 	}
 	else if (feh_is_kp(EVENT_toggle_auto_zoom, state, keysym, button)) {
 		opt.zoom_mode = (opt.zoom_mode == 0 ? ZOOM_MODE_MAX : 0);
+		winwidget_rerender_all(1);
+	}
+	else if (feh_is_kp(EVENT_toggle_fit_width, state, keysym, button)) {
+		opt.fit_width = !opt.fit_width;
 		winwidget_rerender_all(1);
 	}
 	else if (feh_is_kp(EVENT_toggle_filenames, state, keysym, button)) {
