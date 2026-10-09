@@ -1719,7 +1719,7 @@ It is saved in the directory specified by
 .Cm \-\-output\-dir ,
 if set, and in the current working directory otherwise.
 .
-.It W Bq size_to_image
+.It w Bq size_to_image
 .
 Change window size to fit current image size
 .Pq plus/minus zoom, if set .
@@ -1736,13 +1736,6 @@ Jump to a random position in the current filelist
 .It Z Bq toggle_auto_zoom
 .
 Toggle auto-zoom.
-.
-.It w Bq toggle_fit_width
-.
-Toggle fit-to-width: scale every image to the full window width
-.Pq the screen width in fullscreen mode ,
-showing the top of tall images.
-Stays active when switching images.
 .
 .It \&[, \&] Bq prev_dir, next_dir
 .

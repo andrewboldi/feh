@@ -128,7 +128,6 @@ struct __fehoptions {
 	int offset_y;
 	int default_zoom;
 	int zoom_mode;
-	unsigned char fit_width;
 	double zoom_rate;
 	unsigned char adjust_reload;
 	int xinerama_index;
@@ -330,7 +329,6 @@ enum key_action {
 	EVENT_reload_image,
 	EVENT_save_image,
 	EVENT_copy_image,
-	EVENT_toggle_fit_width,
 	EVENT_save_filelist,
 	EVENT_orient_1,
 	EVENT_orient_3,

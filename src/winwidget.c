@@ -495,9 +495,6 @@ void winwidget_render_image(winwidget winwid, int resize, int force_alias)
 				&& (!opt.default_zoom || required_zoom < winwid->zoom))
 			winwid->zoom = required_zoom;
 
-		if (opt.fit_width)
-			winwid->zoom = (double) winwid->w / winwid->im_w;
-
 		if (opt.offset_flags & XValue) {
 			if (opt.offset_flags & XNegative) {
 				winwid->im_x = winwid->w - (winwid->im_w * winwid->zoom) - opt.offset_x;
@@ -516,9 +513,6 @@ void winwidget_render_image(winwidget winwid, int resize, int force_alias)
 		} else {
 			winwid->im_y = (int) (winwid->h - (winwid->im_h * winwid->zoom)) >> 1;
 		}
-		/* start tall images at the top rather than the middle */
-		if (opt.fit_width && winwid->im_y < 0)
-			winwid->im_y = 0;
 	}
 
 	winwid->had_resize = 0;
