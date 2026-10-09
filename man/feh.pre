@@ -1719,7 +1719,7 @@ It is saved in the directory specified by
 .Cm \-\-output\-dir ,
 if set, and in the current working directory otherwise.
 .
-.It w Bq size_to_image
+.It W Bq size_to_image
 .
 Change window size to fit current image size
 .Pq plus/minus zoom, if set .
@@ -1733,7 +1733,7 @@ Close current window
 .
 Jump to a random position in the current filelist
 .
-.It Z Bq toggle_auto_zoom
+.It Z , w Bq toggle_auto_zoom
 .
 Toggle auto-zoom.
 .

@@ -182,11 +182,11 @@ void init_keyevents(void) {
 	feh_set_kb("zoom_default" , 0, XK_KP_Multiply, 0, XK_asterisk,0, 0);
 	feh_set_kb("zoom_fit"  , 0, XK_KP_Divide , 0, XK_slash     , 0, 0);
 	feh_set_kb("zoom_fill" , 0, XK_exclam    , 0, 0            , 0, 0);
-	feh_set_kb("size_to_image" , 0, XK_w      , 0, 0            , 0, 0);
+	feh_set_kb("size_to_image" , 0, XK_W      , 0, 0            , 0, 0);
 	feh_set_kb("render"    , 0, XK_KP_Begin  , 0, XK_R         , 0, 0);
 	feh_set_kb("toggle_actions" , 0, XK_a, 0, 0, 0, 0);
 	feh_set_kb("toggle_aliasing" , 0, XK_A, 0, 0, 0, 0);
-	feh_set_kb("toggle_auto_zoom" , 0, XK_Z, 0, 0, 0, 0);
+	feh_set_kb("toggle_auto_zoom" , 0, XK_Z, 0, XK_w, 0, 0);
 #ifdef HAVE_LIBEXIF
 	feh_set_kb("toggle_exif" , 0, XK_e, 0, 0, 0, 0);
 #endif
