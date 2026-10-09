@@ -261,8 +261,8 @@ OPTION_window_id,
 //typedef enum __fehoption fehoption;
 
 struct __fehkey {
-	unsigned int keysyms[3];
-	unsigned int keystates[3];
+	unsigned int keysyms[4];
+	unsigned int keystates[4];
 	unsigned int state;
 	unsigned int button;
 	char *name;

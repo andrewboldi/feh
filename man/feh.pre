@@ -1525,7 +1525,7 @@ Command line options always override theme options.
 .Pa .config/feh/keys
 defines key bindings.
 It has entries of the form
-.Qq Ar action Op Ar key1 Op Ar key2 Op Ar key3 .
+.Qq Ar action Op Ar key1 Op Ar key2 Op Ar key3 Op Ar key4 .
 .
 .Pp
 .
@@ -1813,11 +1813,11 @@ Go forward ~5% of the filelist
 .
 Go backward ~5% of the filelist
 .
-.It + Bq reload_plus
+.It unbound Bq reload_plus
 .
 Increase reload delay by 1 second
 .
-.It \- Bq reload_minus
+.It unbound Bq reload_minus
 .
 Decrease reload delay by 1 second
 .
@@ -1868,11 +1868,11 @@ Scroll down by one page
 Anti-alias the image.
 Opens the currently selected image in thumbnail mode.
 .
-.It Ao keypad + Ac , Ao Up Ac Bq zoom_in
+.It Ao keypad + Ac , Ao Up Ac , = , + Bq zoom_in
 .
 Zoom in
 .
-.It Ao keypad \- Ac , Ao Down Ac Bq zoom_out
+.It Ao keypad \- Ac , Ao Down Ac , \- Bq zoom_out
 .
 Zoom out
 .

@@ -129,7 +129,7 @@ void init_keyevents(void) {
 	char *confhome = NULL;
 	char *confpath = NULL;
 	char line[128];
-	char action[32], k1[32], k2[32], k3[32];
+	char action[32], k1[32], k2[32], k3[32], k4[32];
 	fehkey *cur_kb = NULL;
 	FILE *conf = NULL;
 	int read = 0;
@@ -176,8 +176,9 @@ void init_keyevents(void) {
 	feh_set_kb("action_7"  , 0, XK_7         , 0, XK_KP_7      , 0, 0);
 	feh_set_kb("action_8"  , 0, XK_8         , 0, XK_KP_8      , 0, 0);
 	feh_set_kb("action_9"  , 0, XK_9         , 0, XK_KP_9      , 0, 0);
-	feh_set_kb("zoom_in"   , 0, XK_Up        , 0, XK_KP_Add    , 0, 0);
-	feh_set_kb("zoom_out"  , 0, XK_Down      , 0, XK_KP_Subtract,0, 0);
+	feh_set_kb("zoom_in"   , 0, XK_Up        , 0, XK_KP_Add    , 0, XK_equal);
+	keys[EVENT_zoom_in].keysyms[3] = XK_plus;
+	feh_set_kb("zoom_out"  , 0, XK_Down      , 0, XK_KP_Subtract,0, XK_minus);
 	feh_set_kb("zoom_default" , 0, XK_KP_Multiply, 0, XK_asterisk,0, 0);
 	feh_set_kb("zoom_fit"  , 0, XK_KP_Divide , 0, XK_slash     , 0, 0);
 	feh_set_kb("zoom_fill" , 0, XK_exclam    , 0, 0            , 0, 0);
@@ -204,8 +205,8 @@ void init_keyevents(void) {
 	feh_set_kb("orient_3" , 0, XK_less, 0, 0, 0, 0);
 	feh_set_kb("flip" , 0, XK_underscore, 0, 0, 0, 0);
 	feh_set_kb("mirror" , 0, XK_bar, 0, 0, 0, 0);
-	feh_set_kb("reload_minus" , 0, XK_minus, 0, 0, 0, 0);
-	feh_set_kb("reload_plus" , 0, XK_plus, 0, 0, 0, 0);
+	feh_set_kb("reload_minus" , 0, 0, 0, 0, 0, 0);
+	feh_set_kb("reload_plus" , 0, 0, 0, 0, 0, 0);
 	feh_set_kb("toggle_keep_vp" , 0, XK_k, 0, 0, 0, 0);
 	feh_set_kb("toggle_fixed_geometry" , 0, XK_g, 0, 0, 0, 0);
 	feh_set_kb("pan" , 0, 0, 0, 0, 0, 0);
@@ -235,10 +236,12 @@ void init_keyevents(void) {
 		*k1 = '\0';
 		*k2 = '\0';
 		*k3 = '\0';
+		*k4 = '\0';
 		cur_kb = NULL;
 
-		read = sscanf(line, "%31s %31s %31s %31s\n",
-			(char *) &action, (char *) &k1, (char* ) &k2, (char *) &k3);
+		read = sscanf(line, "%31s %31s %31s %31s %31s\n",
+			(char *) &action, (char *) &k1, (char* ) &k2, (char *) &k3,
+			(char *) &k4);
 
 		if ((read == EOF) || (read == 0) || (line[0] == '#'))
 			continue;
@@ -249,6 +252,7 @@ void init_keyevents(void) {
 			feh_set_parse_kb_partial(cur_kb, 0, k1);
 			feh_set_parse_kb_partial(cur_kb, 1, k2);
 			feh_set_parse_kb_partial(cur_kb, 2, k3);
+			feh_set_parse_kb_partial(cur_kb, 3, k4);
 		} else {
 			weprintf("keys: Invalid action: %s", action);
 		}
@@ -261,7 +265,7 @@ static short feh_is_kp(unsigned int key_index, unsigned int state,
 	int i;
 
 	if (sym != NoSymbol) {
-		for (i = 0; i < 3; i++) {
+		for (i = 0; i < 4; i++) {
 			if (
 					(keys[key_index].keysyms[i] == sym) &&
 					(keys[key_index].keystates[i] == state))
